@@ -1,0 +1,2 @@
+module Bookmarklet::LinkHelper
+end
