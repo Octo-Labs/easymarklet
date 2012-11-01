@@ -1,4 +1,7 @@
 Dummy::Application.routes.draw do
+  get "bookmarklet_excercise/index"
+  root :to => 'bookmarklet_excercise#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
