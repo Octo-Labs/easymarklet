@@ -49,9 +49,11 @@ XDM Bookmarklets
 To enable cross domain communictaion between your site and other pages
 on the 'net we need to be able to generate a fully qualified URL to your
 bookmarklet code.  To set the correct host you should add this to each
-of your confing/environment/*.rb files.  (Adjust the :host accordingly.)
+of your confing/environment/*.rb files.  Adjust the :host accordingly.
+:port is optional.
 
-    config.action_controller.default_url_options = {:host => 'some.domain'}
+    config.action_controller.default_url_options = {:host =>
+'localhost', :port => 3000}
 
 
 
