@@ -55,6 +55,10 @@ of your confing/environment/*.rb files.  Adjust the :host accordingly.
     config.action_controller.default_url_options = {:host =>
 'localhost', :port => 3000}
 
+XDM bookmarklet code acts as a consumer for data or a service that is
+supplied by the provider, a page on your app.  
+
+
 
 
 This project rocks and uses MIT-LICENSE.

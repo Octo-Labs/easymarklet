@@ -1,0 +1,134 @@
+(function(){
+
+  var Bookmarklet = {}
+
+  Bookmarklet.Consumer = function(bookmarklet){
+    if(bookmarklet == null){ alert('You must pass some bookmarklet to Bookmarklet.Consumer.'); return;}
+    if(bookmarklet.consumer == null){ alert('Your bookmarklet definition is missing a consumer.'); return; }
+    if(bookmarklet.producer == null){ alert('Your bookmarklet definition is missing a producer.'); return; }
+
+    var _this = this;
+    console.log('Bookmarklet.Consumer : init');
+
+    var s1, s2, isLoaded = false, xhr, head = document.getElementsByTagName('head')[0];
+
+    var caseUrl = encodeURIComponent(document.location);
+    var protocol = 'http://'
+    var host = '<%= Rails.application.config.action_controller.default_url_options[:host] %>';
+    var port = '<%= Rails.application.config.action_controller.default_url_options[:port] %>';
+    port = port === '' ? '' : ':' + port;
+    var full_host = protocol + host + port
+
+
+    function scriptOnLoad(){
+        var ciceroDiv = document.createElement('div');
+        ciceroDiv.id = "cicero_div";
+        ciceroDiv.className = 'cicero_iframe_div';
+        //ciceroDiv.appendChild(document.createTextNode("Loading Cicero"));
+        document.body.appendChild(ciceroDiv);
+
+        if (isLoaded || typeof easyXDM === "undefined" || typeof JSON === "undefined") {
+            return;
+        }
+        isLoaded = true;
+        
+        //var dest = full_host + "/bookmarklet_frame?dest=";
+        //dest += encodeURIComponent("/bookmarklet/court_cases/check?court_case[url]=" + caseUrl);
+        
+        var dest = full_host + bookmarklet.producer.path
+        
+        // here we put the main code, in this case we expose an ajax endpoint
+        xhr = new easyXDM.Rpc({
+          remote: dest,
+          container: ciceroDiv,
+            onReady: function(){
+                //xhr.post("example/glossary.php", {
+                //    param1: "a",
+                //    param2: "b"
+                //}, function(json){
+                //    alert(json.glossary.title);
+                //});
+            }
+        }, {
+          remote: {
+            
+                post: {}
+            },
+            local : {
+              alertMessage: {
+                method : function(msg){
+                    alert(msg);
+                }
+              },
+              closeFrame: {
+                method : function(){
+                  //alert('closing!');
+                  var cdiv = document.getElementById('cicero_div');
+                  cdiv.parentNode.removeChild(cdiv);
+                }
+              },
+              resizeFrame : {
+                method : function(height){
+                  //console.log("resizing outter frame : " + height);
+                  var cdiv = document.getElementById('cicero_div');
+                  //console.log(cdiv);
+                  //console.log(cdiv.style)
+                  cdiv.style.height = height + "px";
+                  cdiv.getElementsByTagName("iframe")[0].style.height = height + "px";
+                }
+              }
+            }
+        });
+    }
+
+    // load easyXDM
+    s1 = document.createElement("script");
+    s1.type = "text/javascript";
+    s1.src = full_host + "/assets/easyXDM.js";
+    s1.onreadystatechange = function(){
+        if (this.readyState === "complete" || this.readyState === "loaded") {
+            scriptOnLoad();
+        }
+    };
+    s1.onload = scriptOnLoad;
+    head.appendChild(s1);
+    
+    
+    // load JSON if needed
+    if (typeof JSON === "undefined" || !JSON) {
+        s2 = document.createElement("script");
+        s2.type = "text/javascript";
+        s2.src = full_host + "/assets/json2.js";
+        s2.onreadystatechange = function(){
+            if (this.readyState === "complete" || this.readyState === "loaded") {
+                scriptOnLoad();
+            }
+        };
+        s2.onload = scriptOnLoad;
+        head.appendChild(s2);
+    }
+    
+    //Load the css   
+    bookmarklet.consumer.css = [].concat(bookmarklet.consumer.css)
+    for(var i = 0; i<bookmarklet.consumer.css.length; i++){
+      var src = bookmarklet.consumer.css[i]
+      var css = document.createElement('LINK');
+      css.href = full_host + src;
+      css.type = 'text/css';
+      css.media = 'screen';
+      css.rel = 'stylesheet';
+      head.appendChild(css); 
+    }
+      
+
+
+
+  } // Bookmarklet.Consumer = function(){
+
+  
+  // Now expose the Bookmarklet to the global object
+  window.Bookmarklet = Bookmarklet;
+     
+        
+})();
+
