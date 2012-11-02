@@ -7,13 +7,13 @@ require "bookmarklet/version"
 Gem::Specification.new do |s|
   s.name        = "bookmarklet"
   s.version     = Bookmarklet::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Bookmarklet."
-  s.description = "TODO: Description of Bookmarklet."
+  s.authors     = ["Jeremy Green"]
+  s.email       = ["jeremy@octolabs.com"]
+  s.homepage    = "https://github.com/Octo-Labs/bookmarklet"
+  s.summary     = "The easiest way to create bookmarklets in your rails app."
+  s.description = "The easiest way to create bookmarklets in your rails app."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 3.2.8"
 

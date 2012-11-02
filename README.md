@@ -41,5 +41,18 @@ load your bookmarklet code into the current page and execute it.  Place
 some instructions for your users near the link that tells them to drag
 the link into their bookmark bar.  
 
+XDM Bookmarklets
+----------------------------------
+
+* Note : XDM is a work in progress.
+
+To enable cross domain communictaion between your site and other pages
+on the 'net we need to be able to generate a fully qualified URL to your
+bookmarklet code.  To set the correct host you should add this to each
+of your confing/environment/*.rb files.  (Adjust the :host accordingly.)
+
+    config.action_controller.default_url_options = {:host => 'some.domain'}
+
+
 
 This project rocks and uses MIT-LICENSE.
