@@ -42,12 +42,4 @@ some instructions for your users near the link that tells them to drag
 the link into their bookmark bar.  
 
 
-
-Creating a link to a bookmarklet
----------------------------------
-
-
-
-
-
 This project rocks and uses MIT-LICENSE.
