@@ -1,0 +1,21 @@
+(function(){
+
+  var Bookmarklet = window.Bookmarklet || {}
+
+  Bookmarklet.Producer = function(bookmarklet){
+    if(bookmarklet == null){ alert('You must pass a bookmarklet to Bookmarklet.Producer.'); return;}
+    if(bookmarklet.consumer == null){ alert('Your bookmarklet definition is missing a consumer.'); return; }
+    if(bookmarklet.producer == null){ alert('Your bookmarklet definition is missing a producer.'); return; }
+
+    var _this = this;
+    console.log('Bookmarklet.Producert : init');
+
+
+  } // Bookmarklet.Producer = function(){
+
+  // Now expose the Bookmarklet to the global object
+  window.Bookmarklet = Bookmarklet;
+
+})();
+
+

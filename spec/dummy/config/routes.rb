@@ -1,6 +1,14 @@
 Dummy::Application.routes.draw do
   get "bookmarklet_excercise/index"
   root :to => 'bookmarklet_excercise#index'
+  match 'foobaz_producer' => 'bookmarklet_excercise#foobaz_producer'
+
+  
+  #if Rails.env.test? || Rails.env.development?
+    #require 'jasminerice'
+    #mount Jasminerice::Engine => "/jasmine"
+    #get "/jasmine/:suite" => "jasminerice/spec#index"
+  #end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

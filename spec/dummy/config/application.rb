@@ -6,6 +6,10 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
+
+require 'jasminerice'
+
+
 # require "rails/test_unit/railtie"
 
 Bundler.require
@@ -62,4 +66,5 @@ module Dummy
     config.assets.version = '1.0'
   end
 end
+
 
