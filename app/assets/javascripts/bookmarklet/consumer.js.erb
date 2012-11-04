@@ -11,6 +11,7 @@
     //console.log('Bookmarklet.Consumer : init');
     var bookmarklet = bookmarklet
     var s1, s2, isLoaded = false, xhr, head = document.getElementsByTagName('head')[0];
+    var bookmarkletDiv = null;
 
     var consumer_url = encodeURIComponent(document.location);
     var protocol = 'http://'
@@ -27,7 +28,6 @@
         }
         isLoaded = true;
         
-        var bookmarkletDiv = null;
         if(bookmarklet.visible){
           bookmarkletDiv = document.createElement('div');
           bookmarkletDiv.id = "bookmarklet_div";
@@ -143,9 +143,10 @@
       for (var key in bookmarklet.consumer.methods) {
         if (bookmarklet.consumer.methods.hasOwnProperty(key)) {
           //console.log(key);
-          rpcConfig.local[key] = bookmarklet.consumer.methods
+          rpcConfig.local[key] = bookmarklet.consumer.methods[key];
         }
       }
+      rpcConfig.local.closeFrame = this.closeFrame;
 
       rpcConfig.remote = {};
       for (var key in bookmarklet.producer.methods) {
@@ -158,6 +159,11 @@
       return rpcConfig;
     }
 
+    this.closeFrame = function(){
+      if(bookmarkletDiv){
+        bookmarkletDiv.parentNode.removeChild(bookmarkletDiv)
+      }
+    }
 
   } // Bookmarklet.Consumer = function(){
 

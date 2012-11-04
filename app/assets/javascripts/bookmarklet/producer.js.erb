@@ -8,11 +8,59 @@
     if(bookmarklet.producer == null){ alert('Your bookmarklet definition is missing a producer.'); return; }
 
     var _this = this;
-    console.log('Bookmarklet.Producert : init');
+    _this.consumer = null;
+    //console.log('Bookmarklet.Producert : init');
 
+    this.init = function(){
+      _this.createRpcChannel();
+    }
+
+    this.createRpcConfig = function(){
+      var rpcConfig = {};
+
+      rpcConfig.remote = {};
+      for (var key in bookmarklet.consumer.methods) {
+        if (bookmarklet.consumer.methods.hasOwnProperty(key)) {
+          //console.log(key);
+          rpcConfig.remote[key] = bookmarklet.consumer.methods[key];
+          _this[key]
+        }
+      }
+      rpcConfig.remote.closeFrame = {};
+      _this.closeFrame  = function(){ _this.consumer.closeFrame() };
+
+      rpcConfig.local = {};
+      for (var key in bookmarklet.producer.methods) {
+        if (bookmarklet.producer.methods.hasOwnProperty(key)) {
+          //console.log(key);
+          rpcConfig.local[key] = {}; //We just stub these since they're not called on this side
+        }
+      }
+
+      return rpcConfig;
+    }
+
+    this.createRpcChannel = function(){
+      _this.consumer = new easyXDM.Rpc(
+        /** The channel configuration*/
+        {
+          local: "/assets/cors/index.html",
+          swf: "/assets/easyxdm.swf",
+          onReady: function(){
+            //console.log("calling the remote test....");
+            //Cicero.BookmarkletFrame.remote.alertMessage("just a test...");
+          }
+        },  _this.createRpcConfig()
+      );
+    }
+
+    this.call = function(func){
+      _this.consumer[func]();
+    }
 
   } // Bookmarklet.Producer = function(){
 
+    
   // Now expose the Bookmarklet to the global object
   window.Bookmarklet = Bookmarklet;
 
