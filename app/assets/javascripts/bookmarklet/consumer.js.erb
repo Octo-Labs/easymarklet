@@ -8,8 +8,8 @@
     if(bookmarklet.producer == null){ alert('Your bookmarklet definition is missing a producer.'); return; }
 
     var _this = this;
-    console.log('Bookmarklet.Consumer : init');
-
+    //console.log('Bookmarklet.Consumer : init');
+    var bookmarklet = bookmarklet
     var s1, s2, isLoaded = false, xhr, head = document.getElementsByTagName('head')[0];
 
     var consumer_url = encodeURIComponent(document.location);
@@ -21,17 +21,21 @@
 
     // Once easyXDM is available this will create an iframe and set up the RPC channel
     function scriptOnLoad(){
-        var bookmarkletDiv = document.createElement('div');
-        bookmarkletDiv.id = "bookmarklet_div";
-        bookmarkletDiv.className = 'bookmarklet_iframe_div';
-        //bookmarkletDiv.appendChild(document.createTextNode("Loading bookmarklet"));
-        document.body.appendChild(bookmarkletDiv);
-
+        
         if (isLoaded || typeof easyXDM === "undefined" || typeof JSON === "undefined") {
             return;
         }
         isLoaded = true;
         
+        var bookmarkletDiv = null;
+        if(bookmarklet.visible){
+          bookmarkletDiv = document.createElement('div');
+          bookmarkletDiv.id = "bookmarklet_div";
+          bookmarkletDiv.className = 'bookmarklet_iframe_div';
+          //bookmarkletDiv.appendChild(document.createTextNode("Loading bookmarklet"));
+          document.body.appendChild(bookmarkletDiv);
+        }
+
         //var dest = full_host + "/bookmarklet_frame?dest=";
         //dest += encodeURIComponent("/bookmarklet/court_cases/check?court_case[url]=" + caseUrl);
         
@@ -49,7 +53,7 @@
                 //    alert(json.glossary.title);
                 //});
             }
-        }, {
+        }, _this.createRpcConfig() /*{
           remote: {
             
                 post: {}
@@ -78,7 +82,8 @@
                 }
               }
             }
-        });
+        }*/
+      );
     }
 
     this.loadEasyXdmLib = function(){
@@ -131,6 +136,27 @@
       this.loadCss();
     }
 
+    this.createRpcConfig = function(){
+      var rpcConfig = {};
+
+      rpcConfig.local = {};
+      for (var key in bookmarklet.consumer.methods) {
+        if (bookmarklet.consumer.methods.hasOwnProperty(key)) {
+          //console.log(key);
+          rpcConfig.local[key] = bookmarklet.consumer.methods
+        }
+      }
+
+      rpcConfig.remote = {};
+      for (var key in bookmarklet.producer.methods) {
+        if (bookmarklet.producer.methods.hasOwnProperty(key)) {
+          //console.log(key);
+          rpcConfig.remote[key] = {}; //We just stub these since they're not called on this side
+        }
+      }
+
+      return rpcConfig;
+    }
 
 
   } // Bookmarklet.Consumer = function(){

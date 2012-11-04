@@ -1,6 +1,7 @@
 (function(){
   
   var FooBazBookmarklet = {
+    visible : true,
     consumer : {
       css : [], // could be an array or a string
       methods : { // The methods that the producer can call
