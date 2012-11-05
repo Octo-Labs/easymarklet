@@ -10,7 +10,7 @@
     },
     producer : {
       path : "/foobaz_producer", // The path on your app that provides your data service
-      methods : { // The methods that the consumer can call 
+      methods : { // The methods that the consumer can call
       
       }
     }
