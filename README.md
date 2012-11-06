@@ -63,8 +63,7 @@ XDM Bookmarklets
 
 To enable cross domain communictaion between your site and other pages on the 'net we need to be able to generate a fully qualified URL to your bookmarklet code.  To set the correct host you should add this to each of your confing/environment/*.rb files.  Adjust the :host accordingly. :port is optional.
 
-    config.action_controller.default_url_options = {:host =>
-'localhost', :port => 3000}
+    config.action_controller.default_url_options = {:host => 'localhost', :port => 3000}
 
 XDM bookmarklet code acts as a consumer for data or a service that is
 supplied by the provider, a page on your app.  
@@ -79,7 +78,9 @@ Run something like this:
 This wil add 3 files to your javascript directory:  
 
 app/assets/javascripts/barbaz_xdm_bookmarklet.js
+
 app/assets/javascripts/barbaz_xdm_consumer.js
+
 app/assets/javascripts/barbaz_xdm_producer.js
 
 ### *_bookmarklet.js
