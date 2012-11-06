@@ -1,17 +1,17 @@
 (function(){
 
-  var Bookmarklet = window.Bookmarklet || {}
+  var Easymarklet = window.Easymarklet || {}
 
-  Bookmarklet.Consumer = function(bookmarklet){
-    if(bookmarklet == null){ alert('You must pass some bookmarklet to Bookmarklet.Consumer.'); return;}
+  Easymarklet.Consumer = function(bookmarklet){
+    if(bookmarklet == null){ alert('You must pass some bookmarklet to Easymarklet.Consumer.'); return;}
     if(bookmarklet.consumer == null){ alert('Your bookmarklet definition is missing a consumer.'); return; }
     if(bookmarklet.producer == null){ alert('Your bookmarklet definition is missing a producer.'); return; }
 
     var _this = this;
-    //console.log('Bookmarklet.Consumer : init');
+    //console.log('Easymarklet.Consumer : init');
     var bookmarklet = bookmarklet
     var s1, s2, isLoaded = false, xhr, head = document.getElementsByTagName('head')[0];
-    var bookmarkletDiv = null;
+    var easymarkletDiv = null;
 
     var consumer_url = encodeURIComponent(document.location);
     var protocol = 'http://'
@@ -29,11 +29,11 @@
         isLoaded = true;
         
         if(bookmarklet.visible){
-          bookmarkletDiv = document.createElement('div');
-          bookmarkletDiv.id = "bookmarklet_div";
-          bookmarkletDiv.className = 'bookmarklet_iframe_div';
-          //bookmarkletDiv.appendChild(document.createTextNode("Loading bookmarklet"));
-          document.body.appendChild(bookmarkletDiv);
+          easymarkletDiv = document.createElement('div');
+          easymarkletDiv.id = "easymarklet_div";
+          easymarkletDiv.className = 'easymarklet_iframe_div';
+          //easymarkletDiv.appendChild(document.createTextNode("Loading bookmarklet"));
+          document.body.appendChild(easymarkletDiv);
         }
 
         //var dest = full_host + "/bookmarklet_frame?dest=";
@@ -44,7 +44,7 @@
         // here we put the main code, in this case we expose an ajax endpoint
         xhr = new easyXDM.Rpc({
           remote: dest,
-          container: bookmarkletDiv,
+          container: easymarkletDiv,
             onReady: function(){
                 //xhr.post("example/glossary.php", {
                 //    param1: "a",
@@ -160,21 +160,21 @@
     }
 
     this.closeFrame = function(){
-      if(bookmarkletDiv){
-        bookmarkletDiv.parentNode.removeChild(bookmarkletDiv)
+      if(easymarkletDiv){
+        easymarkletDiv.parentNode.removeChild(easymarkletDiv)
       }
     }
 
     this.resizeFrame = function(height){
-      bookmarkletDiv.style.height = height + "px";
-      bookmarkletDiv.getElementsByTagName("iframe")[0].style.height = height + "px";
+      easymarkletDiv.style.height = height + "px";
+      easymarkletDiv.getElementsByTagName("iframe")[0].style.height = height + "px";
     }
 
-  } // Bookmarklet.Consumer = function(){
+  } // Easymarklet.Consumer = function(){
 
   
-  // Now expose the Bookmarklet to the global object
-  window.Bookmarklet = Bookmarklet;
+  // Now expose the Easymarklet to the global object
+  window.Easymarklet = Easymarklet;
      
         
 })();

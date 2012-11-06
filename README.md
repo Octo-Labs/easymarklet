@@ -1,4 +1,4 @@
-Bookmarklet
+Easymarklet
 ===================
 
 The easiest way to create bookmarklets for your rails app.
@@ -8,7 +8,7 @@ Installation
 
 Add this to your Gemfile:
 
-    gem 'bookmarklet'
+    gem 'easymarklet'
 
 Then run:
 
@@ -32,9 +32,9 @@ Linking to your bookmarklet
 ---------------------------------
 
 Then in a view template you can link to your bookmarklet using the
-bookmarklet_js helper.
+easymarklet_js helper.
 
-    <%= link_to "Foo Baz!", bookmarklet_js('foobaz_bookmarklet.js') %>
+    <%= link_to "Foo Baz!", easymarklet_js('foobaz_bookmarklet.js') %>
 
 The resulting link will contain a small snippet of javascript that will
 load your bookmarklet code into the current page and execute it.  Place

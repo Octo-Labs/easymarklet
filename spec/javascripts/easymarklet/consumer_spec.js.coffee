@@ -1,4 +1,4 @@
-describe "Bookmarklet.Consumer", ->
+describe "Easymarklet.Consumer", ->
   beforeEach ->
     @bookmarklet_stub = { 
       consumer : {
@@ -10,15 +10,15 @@ describe "Bookmarklet.Consumer", ->
     }
 
   it "should be defined", ->
-    expect(Bookmarklet.Consumer).toBeDefined()
+    expect(Easymarklet.Consumer).toBeDefined()
 
   describe ".init()", ->
     it "should be defined", ->
-      consumer = new Bookmarklet.Consumer(@bookmarklet_stub)
+      consumer = new Easymarklet.Consumer(@bookmarklet_stub)
       expect(consumer.init).toBeDefined()
 
     it "should call a few setup functions", ->
-      consumer = new Bookmarklet.Consumer(@bookmarklet_stub)
+      consumer = new Easymarklet.Consumer(@bookmarklet_stub)
       spyOn(consumer,'loadEasyXdmLib').andReturn(null)
       spyOn(consumer,'loadJsonLib').andReturn(null)
       spyOn(consumer,'loadCss').andReturn(null)
@@ -30,22 +30,22 @@ describe "Bookmarklet.Consumer", ->
 
   describe ".loadEasyXdmLib()", ->
     it "should be defined", ->
-      consumer = new Bookmarklet.Consumer(@bookmarklet_stub)
+      consumer = new Easymarklet.Consumer(@bookmarklet_stub)
       expect(consumer.loadEasyXdmLib).toBeDefined()
 
   describe ".loadJsonLib()", ->
     it "should be defined", ->
-      consumer = new Bookmarklet.Consumer(@bookmarklet_stub)
+      consumer = new Easymarklet.Consumer(@bookmarklet_stub)
       expect(consumer.loadJsonLib).toBeDefined()
 
   describe ".loadCss()", ->
     it "should be defined", ->
-      consumer = new Bookmarklet.Consumer(@bookmarklet_stub)
+      consumer = new Easymarklet.Consumer(@bookmarklet_stub)
       expect(consumer.loadCss).toBeDefined()
 
   describe ".createRpcConfig()", ->
     beforeEach ->
-      @consumer = new Bookmarklet.Consumer(@bookmarklet_stub)
+      @consumer = new Easymarklet.Consumer(@bookmarklet_stub)
 
     it "should be defined", ->
       expect(@consumer.createRpcConfig).toBeDefined()
@@ -60,7 +60,7 @@ describe "Bookmarklet.Consumer", ->
 
       it "should contain methods from the bookmarklet consumer", ->
         @bookmarklet_stub.consumer.methods.testFunk = -> "Get Down!"
-        @consumer = new Bookmarklet.Consumer(@bookmarklet_stub)
+        @consumer = new Easymarklet.Consumer(@bookmarklet_stub)
         config = @consumer.createRpcConfig()
         expect(config.local.testFunk).toBeDefined()
 
@@ -71,7 +71,7 @@ describe "Bookmarklet.Consumer", ->
 
       it "should contain methods from the bookmarklet producer", ->
         @bookmarklet_stub.producer.methods.testFunk = -> "Get Down!"
-        @consumer = new Bookmarklet.Consumer(@bookmarklet_stub)
+        @consumer = new Easymarklet.Consumer(@bookmarklet_stub)
         config = @consumer.createRpcConfig()
         expect(config.remote.testFunk).toBeDefined()
 

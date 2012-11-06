@@ -13,7 +13,7 @@ require 'jasminerice'
 # require "rails/test_unit/railtie"
 
 Bundler.require
-require "bookmarklet"
+require "easymarklet"
 
 module Dummy
   class Application < Rails::Application

@@ -1,15 +1,15 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "bookmarklet/version"
+require "easymarklet/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "bookmarklet"
-  s.version     = Bookmarklet::VERSION
+  s.name        = "easymarklet"
+  s.version     = Easymarklet::VERSION
   s.authors     = ["Jeremy Green"]
   s.email       = ["jeremy@octolabs.com"]
-  s.homepage    = "https://github.com/Octo-Labs/bookmarklet"
+  s.homepage    = "https://github.com/Octo-Labs/easymarklet"
   s.summary     = "The easiest way to create bookmarklets in your rails app."
   s.description = "The easiest way to create bookmarklets in your rails app."
 

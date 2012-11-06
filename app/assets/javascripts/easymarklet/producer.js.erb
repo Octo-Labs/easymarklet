@@ -1,15 +1,15 @@
 (function(){
 
-  var Bookmarklet = window.Bookmarklet || {}
+  var Easymarklet = window.Easymarklet || {}
 
-  Bookmarklet.Producer = function(bookmarklet){
-    if(bookmarklet == null){ alert('You must pass a bookmarklet to Bookmarklet.Producer.'); return;}
+  Easymarklet.Producer = function(bookmarklet){
+    if(bookmarklet == null){ alert('You must pass a bookmarklet to Easymarklet.Producer.'); return;}
     if(bookmarklet.consumer == null){ alert('Your bookmarklet definition is missing a consumer.'); return; }
     if(bookmarklet.producer == null){ alert('Your bookmarklet definition is missing a producer.'); return; }
 
     var _this = this;
     _this.consumer = null;
-    //console.log('Bookmarklet.Producert : init');
+    //console.log('Easymarklet.Producert : init');
 
     this.init = function(){
       _this.createRpcChannel();
@@ -48,7 +48,7 @@
           swf: "/assets/easyxdm.swf",
           onReady: function(){
             //console.log("calling the remote test....");
-            //Cicero.BookmarkletFrame.remote.alertMessage("just a test...");
+            //Cicero.EasymarkletFrame.remote.alertMessage("just a test...");
           }
         },  _this.createRpcConfig()
       );
@@ -58,11 +58,11 @@
       _this.consumer[func]();
     }
 
-  } // Bookmarklet.Producer = function(){
+  } // Easymarklet.Producer = function(){
 
     
-  // Now expose the Bookmarklet to the global object
-  window.Bookmarklet = Bookmarklet;
+  // Now expose the Easymarklet to the global object
+  window.Easymarklet = Easymarklet;
 
 })();
 

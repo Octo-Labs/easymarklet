@@ -1,8 +1,8 @@
 #= require jquery
 #= require jquery_ujs
 #= require_tree .
-#= require bookmarklet/consumer
-#= require bookmarklet/producer
+#= require easymarklet/consumer
+#= require easymarklet/producer
 
 jasmine.getFixtures().fixturesPath = 'fixtures'
 

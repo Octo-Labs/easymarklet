@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bookmarklet (0.0.1)
+    easymarklet (0.0.1)
       easyxdm-rails (~> 0.0.5)
       rails (~> 3.2.8)
 
@@ -171,9 +171,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bookmarklet!
   capybara
   capybara-webkit
+  easymarklet!
   guard-rspec
   guard-spork
   jasminerice

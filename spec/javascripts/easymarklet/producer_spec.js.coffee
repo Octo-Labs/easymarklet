@@ -1,4 +1,4 @@
-describe "Bookmarklet.Producer", ->
+describe "Easymarklet.Producer", ->
   beforeEach ->
     @bookmarklet_stub = { 
       consumer : {
@@ -11,16 +11,16 @@ describe "Bookmarklet.Producer", ->
 
     
   it "should be defined", ->
-    expect(Bookmarklet.Producer).toBeDefined()
+    expect(Easymarklet.Producer).toBeDefined()
 
   describe ".init()", ->
     it "should be defined", ->
-      producer = new Bookmarklet.Producer(@bookmarklet_stub)
+      producer = new Easymarklet.Producer(@bookmarklet_stub)
       expect(producer.init).toBeDefined()
 
   describe ".createRpcConfig()", ->
     beforeEach ->
-      @producer = new Bookmarklet.Producer(@bookmarklet_stub)
+      @producer = new Easymarklet.Producer(@bookmarklet_stub)
 
     it "should be defined", ->
       expect(@producer.createRpcConfig).toBeDefined()
@@ -35,7 +35,7 @@ describe "Bookmarklet.Producer", ->
 
       it "should contain methods from the bookmarklet producer", ->
         @bookmarklet_stub.producer.methods.testFunk = -> "Get Down!"
-        @producer = new Bookmarklet.Producer(@bookmarklet_stub)
+        @producer = new Easymarklet.Producer(@bookmarklet_stub)
         config = @producer.createRpcConfig()
         expect(config.local.testFunk).toBeDefined()
 
@@ -46,7 +46,7 @@ describe "Bookmarklet.Producer", ->
 
       it "should contain methods from the bookmarklet consumer", ->
         @bookmarklet_stub.consumer.methods.testFunk = -> "Get Down!"
-        @producer = new Bookmarklet.Producer(@bookmarklet_stub)
+        @producer = new Easymarklet.Producer(@bookmarklet_stub)
         config = @producer.createRpcConfig()
         expect(config.remote.testFunk).toBeDefined()
 

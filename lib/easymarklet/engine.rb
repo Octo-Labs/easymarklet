@@ -1,4 +1,4 @@
-module Bookmarklet
+module Easymarklet
 
   require 'easyxdm-rails'
   
