@@ -61,6 +61,10 @@ XDM Bookmarklets
 
 * Note : XDM is a work in progress.
 
+XDM bookmarklets allow you to insert an iframe from your app into the 'host' page
+which can communicate seamlessly with the bookmarklet code running in
+the 'host' page.  
+
 To enable cross domain communictaion between your site and other pages on the 'net we need to be able to generate a fully qualified URL to your bookmarklet code.  To set the correct host you should add this to each of your confing/environment/*.rb files.  Adjust the :host accordingly. :port is optional.
 
     config.action_controller.default_url_options = {:host => 'localhost', :port => 3000}
@@ -123,10 +127,19 @@ page that is in the browser when someone clicks your bookmarklet.
     var barbaz_xdm_consumer = new Easymarklet.Consumer(BarbazXdmBookmarklet);
     barbaz_xdm_consumer.init();
 
+The Easymarklet.Consumer will use the bookmarklet object that you pass
+to it to configure the setup of the RPC channel.  You can include
+additional files in the mainifest to make the available on the consiming
+page.  
+
+Be careful to isolate your code.  You don't want your bookmarklet to
+break other pages.
+
+
 ### *_producer.js
 
 This is a js manifest that should be included in the page that will
-proved the service endpoint in your app.
+provide the service endpoint in your app.
 
     //= require easyXDM
     //= require easymarklet/producer
@@ -136,8 +149,24 @@ proved the service endpoint in your app.
     barbaz_xdm_producer.init();
 
 
+#### Convenience methods
+
+Easymarklet.producer provides a couple of convenience methods to help
+manage your bookmarklet frame. These methods would be called inside of
+your UI frame, and would be transmitted over the RPC channel to allow
+the consumer code to alter the frame that has been inserted into the
+external page. 
 
 
+##### closeFrame()
+
+You can call
+barbaz_xdm_producer.closeFrame() to remove the frame from the page.
+
+##### resizeFrame(height)
+
+You can call barbaz_xdm_producer.resizeFrame(600) to resize the frame to
+be 600px tall.
 
 
 This project rocks and uses MIT-LICENSE.
