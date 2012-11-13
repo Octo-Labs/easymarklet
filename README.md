@@ -143,7 +143,7 @@ provide the service endpoint in your app.
 
     //= require easyXDM
     //= require easymarklet/producer
-    //= require barbaz_xdm_xdm
+    //= require barbaz_xdm_bookmarklet
     
     var barbaz_xdm_producer = new Easymarklet.Producer(BarbazXdmBookmarklet);
     barbaz_xdm_producer.init();

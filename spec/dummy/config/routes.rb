@@ -1,4 +1,8 @@
 Dummy::Application.routes.draw do
+
+  match 'barbaz' => 'barbaz_producer#index'
+
+  get "barbaz_producer" => "barbaz_producer#index"
   get "bookmarklet_excercise/index"
   root :to => 'bookmarklet_excercise#index'
   match 'foobaz_producer' => 'bookmarklet_excercise#foobaz_producer'
