@@ -8,7 +8,7 @@ module Easymarklet
       template "xdm_producer.js", "app/assets/javascripts/#{file_name}_producer.js"
       template "xdm_producer_controller.rb", "app/controllers/#{file_name}_producer_controller.rb"
       template "xdm_producer_index.html.erb", "app/views/#{file_name}_producer/index.html.erb"
-      template "views/easymarklet_layout.html.erb", "app/views/layouts/easymarklet.html.erb"
+      template "views/easymarklet_layout.html.erb", "app/views/layouts/#{file_name}_producer.html.erb"
     end
 
     def create_routes

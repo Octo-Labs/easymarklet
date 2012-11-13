@@ -1,6 +1,6 @@
 class <%= name.camelize %>ProducerController < ApplicationController
 
-  layout 'easymarklet'
+  layout '<%= name %>_producer'
 
   def index
   end
