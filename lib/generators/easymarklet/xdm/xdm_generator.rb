@@ -12,14 +12,14 @@ module Easymarklet
     end
 
     def create_routes
-      route("match '#{file_name}' => '#{file_name}_producer#index'")
+      route("match '#{file_name}_producer' => '#{file_name}_producer#index'")
     end
 
     def display_msg
       puts ""
       puts "You can link to your new bookmarklet with this :"
       puts ""
-      puts "<%= link_to '#{file_name.titleize}', bookmarklet_js('#{file_name}_consumer.js') %>"
+      puts "<%= link_to '#{file_name.titleize}', easymarklet_js('#{file_name}_consumer.js') %>"
       puts ""
     end
 

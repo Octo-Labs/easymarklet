@@ -8,6 +8,7 @@
     if(bookmarklet.producer == null){ alert('Your bookmarklet definition is missing a producer.'); return; }
 
     var _this = this;
+    _this.producer = null;
     //console.log('Easymarklet.Consumer : init');
     var bookmarklet = bookmarklet
     var s1, s2, isLoaded = false, xhr, head = document.getElementsByTagName('head')[0];
@@ -42,10 +43,13 @@
         var dest = full_host + bookmarklet.producer.path
         
         // here we put the main code, in this case we expose an ajax endpoint
-        xhr = new easyXDM.Rpc({
+        _this.producer = new easyXDM.Rpc({
           remote: dest,
           container: easymarkletDiv,
-            onReady: function(){
+          onReady: function(){
+            if(bookmarklet.consumer.init){
+              bookmarklet.consumer.init();
+            }
                 //xhr.post("example/glossary.php", {
                 //    param1: "a",
                 //    param2: "b"

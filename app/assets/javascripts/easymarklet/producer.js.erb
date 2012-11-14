@@ -9,7 +9,6 @@
 
     var _this = this;
     _this.consumer = null;
-    //console.log('Easymarklet.Producert : init');
 
     this.init = function(){
       _this.createRpcChannel();
@@ -22,8 +21,8 @@
       for (var key in bookmarklet.consumer.methods) {
         if (bookmarklet.consumer.methods.hasOwnProperty(key)) {
           //console.log(key);
-          rpcConfig.remote[key] = bookmarklet.consumer.methods[key];
-          _this[key]
+          rpcConfig.remote[key] = {}; //bookmarklet.consumer.methods[key];
+          //_this[key]
         }
       }
       rpcConfig.remote.closeFrame = {};
@@ -33,7 +32,7 @@
       for (var key in bookmarklet.producer.methods) {
         if (bookmarklet.producer.methods.hasOwnProperty(key)) {
           //console.log(key);
-          rpcConfig.local[key] = {}; //We just stub these since they're not called on this side
+          rpcConfig.local[key] = bookmarklet.producer.methods[key]; //We just stub these since they're not called on this side
         }
       }
 
@@ -41,12 +40,16 @@
     }
 
     this.createRpcChannel = function(){
+
       _this.consumer = new easyXDM.Rpc(
         /** The channel configuration*/
         {
-          local: "/assets/cors/index.html",
-          swf: "/assets/easyxdm.swf",
+          //local: "/assets/cors/index.html",
+          //swf: "/assets/easyxdm.swf",
           onReady: function(){
+            if(bookmarklet.producer.init){
+              bookmarklet.producer.init();
+            }
             //console.log("calling the remote test....");
             //Cicero.EasymarkletFrame.remote.alertMessage("just a test...");
           }
