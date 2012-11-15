@@ -3,7 +3,8 @@ module Easymarklet
     source_root File.expand_path('../templates', __FILE__)
     
     def copy_js_file
-      copy_file "simple_bookmarklet.js", "app/assets/javascripts/#{file_name}_bookmarklet.js"
+      template "simple_bookmarklet.js", "app/assets/javascripts/#{file_name}_bookmarklet.js"
+      template "simple_bookmarklet.css", "app/assets/stylesheets/#{file_name}_bookmarklet.css"
     end
 
     def display_msg

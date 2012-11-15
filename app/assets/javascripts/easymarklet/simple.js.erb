@@ -1,0 +1,53 @@
+(function(){
+
+  var Easymarklet = window.Easymarklet || {}
+
+  Easymarklet.Simple = function(bookmarklet){
+    if(bookmarklet == null){ alert('You must pass some bookmarklet to Easymarklet.Simple.'); return;}
+    if(bookmarklet.init == null){ alert('Your bookmarklet is missing an init function.'); return; }
+    //if(bookmarklet.consumer == null){ alert('Your bookmarklet definition is missing a consumer.'); return; }
+    //if(bookmarklet.producer == null){ alert('Your bookmarklet definition is missing a producer.'); return; }
+
+    var _this = this;
+    var bookmarklet = bookmarklet
+    var head = document.getElementsByTagName('head')[0];
+
+    var consumer_url = encodeURIComponent(document.location);
+    var protocol = 'http://'
+    var host = '<%= Rails.application.config.action_controller.default_url_options[:host] %>';
+    var port = '<%= Rails.application.config.action_controller.default_url_options[:port] %>';
+    port = port === '' ? '' : ':' + port;
+    var full_host = protocol + host + port;
+
+    this.loadCss = function(){
+      //Load the css   
+      bookmarklet.css = [].concat(bookmarklet.css)
+      for(var i = 0; i<bookmarklet.css.length; i++){
+        var src = bookmarklet.css[i]
+        var css = document.createElement('LINK');
+        css.href = full_host + src;
+        css.type = 'text/css';
+        css.media = 'screen';
+        css.rel = 'stylesheet';
+        head.appendChild(css); 
+      }
+    }
+
+    this.init = function(){
+      console.log(bookmarklet);
+      this.loadCss();
+      if(bookmarklet.init){
+        bookmarklet.init();
+      }
+    }
+
+  } // Easymarklet.Simple = function(){
+
+
+  // Now expose the Easymarklet to the global object
+  window.Easymarklet = Easymarklet;
+
+
+})();
+
+
