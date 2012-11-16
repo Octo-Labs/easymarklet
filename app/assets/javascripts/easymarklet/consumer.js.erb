@@ -48,7 +48,7 @@
           container: easymarkletDiv,
           onReady: function(){
             if(bookmarklet.consumer.init){
-              bookmarklet.consumer.init();
+              bookmarklet.consumer.init(full_host,_this.producer);
             }
                 //xhr.post("example/glossary.php", {
                 //    param1: "a",
