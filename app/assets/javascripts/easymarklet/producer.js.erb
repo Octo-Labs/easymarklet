@@ -28,6 +28,10 @@
       rpcConfig.remote.closeFrame = {};
       _this.closeFrame  = function(){ _this.consumer.closeFrame() };
 
+      rpcConfig.remote.resizeFrame = {};
+      _this.resizeFrame  = function(height){ _this.consumer.resizeFrame(height) };
+
+
       rpcConfig.local = {};
       for (var key in bookmarklet.producer.methods) {
         if (bookmarklet.producer.methods.hasOwnProperty(key)) {
@@ -50,8 +54,14 @@
             if(bookmarklet.producer.init){
               bookmarklet.producer.init();
             }
-            //console.log("calling the remote test....");
-            //Cicero.EasymarkletFrame.remote.alertMessage("just a test...");
+            var oldHeight = 0;
+            setInterval(function(){
+              var currentHeight = $('body').outerHeight(true); //document.body.scrollHeight;
+              if(currentHeight != oldHeight){
+                _this.resizeFrame(currentHeight);
+                oldHeight = currentHeight;
+              }
+            },200);
           }
         },  _this.createRpcConfig()
       );
