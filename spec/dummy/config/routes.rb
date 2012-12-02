@@ -1,5 +1,9 @@
 Dummy::Application.routes.draw do
 
+  match 'fvbiframe_producer' => 'fvbiframe_producer#index'
+
+  match 'fvb_xdm_producer' => 'fvb_xdm_producer#index'
+
   match 'barbaz' => 'barbaz_producer#index'
 
   get "barbaz_producer" => "barbaz_producer#index"
