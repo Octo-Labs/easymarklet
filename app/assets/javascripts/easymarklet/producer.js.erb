@@ -1,6 +1,11 @@
 (function(){
 
   var Easymarklet = window.Easymarklet || {}
+  Easymarklet.ProducerUtil = Easymarklet.ProducerUtil || {}
+
+  Easymarklet.ProducerUtil.resizeFrame = function(height){
+    $('iframe').css({ height : height + "px" });
+  }
 
   Easymarklet.Producer = function(bookmarklet){
     if(bookmarklet == null){ alert('You must pass a bookmarklet to Easymarklet.Producer.'); return;}

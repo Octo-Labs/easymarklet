@@ -41,6 +41,9 @@
         //dest += encodeURIComponent("/bookmarklet/court_cases/check?court_case[url]=" + caseUrl);
         
         var dest = full_host + bookmarklet.producer.path
+        if(bookmarklet.producer.buffer){
+          dest = full_host + bookmarklet.producer.buffer + "?producer=" + encodeURIComponent(bookmarklet.producer.path);
+        }
         
         // here we put the main code, in this case we expose an ajax endpoint
         _this.producer = new easyXDM.Rpc({

@@ -1,0 +1,21 @@
+(function(){
+  
+  var Easymarklet = window.Easymarklet || {}
+  Easymarklet.Dlux = Easymarklet.Dlux || {}
+
+  Easymarklet.Dlux.setupInterval = function(){
+    if(parent.Easymarklet && parent.Easymarklet.ProducerUtil){
+      var oldHeight = 0;
+      setInterval(function(){
+        var currentHeight = $('body').outerHeight(true); //document.body.scrollHeight;
+        if(currentHeight != oldHeight){
+          parent.Easymarklet.ProducerUtil.resizeFrame(currentHeight);
+          oldHeight = currentHeight;
+        }
+      },200);
+    }
+  }
+
+  setTimeout(Easymarklet.Dlux.setupInterval,200);
+
+})();

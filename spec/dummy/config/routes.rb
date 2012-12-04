@@ -1,5 +1,9 @@
 Dummy::Application.routes.draw do
 
+  match 'fvb_dlux_producer/buffer' => 'fvb_dlux_producer#buffer'
+
+  match 'fvb_dlux_producer' => 'fvb_dlux_producer#index'
+
   match 'fvbiframe_producer' => 'fvbiframe_producer#index'
 
   match 'fvb_xdm_producer' => 'fvb_xdm_producer#index'

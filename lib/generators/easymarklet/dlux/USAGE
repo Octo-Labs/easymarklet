@@ -1,0 +1,15 @@
+Description:
+    Generate a new xdm bookmarklet.
+
+Example:
+    rails generate easymarklet:xdm foobaz
+
+    This will create:
+        app/assets/javascripts/foobaz_bookmarklet.js
+        app/assets/javascripts/foobaz_consumer.js
+        app/assets/javascripts/foobaz_producer.js
+
+
+    Then you could link to it with:
+        <%= link_to "FooBaz XDM", easymarklet_js('foobaz_consumer.js') %>
+
