@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<iframe src="<%= params[:producer] %>" frameborder="0"></iframe>
+<iframe src="<%= params[:producer] %>?url=<%= params[:url] %>" frameborder="0"></iframe>
 
 
 <%= javascript_include_tag "fvb_dlux_producer" %>
