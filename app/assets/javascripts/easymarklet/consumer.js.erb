@@ -15,7 +15,7 @@
     var easymarkletDiv = null;
 
     var consumer_url = encodeURIComponent(document.location);
-    var protocol = 'http://'
+    var protocol = (document.location.href.substring(0,8) === 'https://') ? 'https://' : 'http://'
     var host = '<%= Rails.application.config.action_controller.default_url_options[:host] %>';
     var port = '<%= Rails.application.config.action_controller.default_url_options[:port] %>';
     port = port === '' ? '' : ':' + port;
