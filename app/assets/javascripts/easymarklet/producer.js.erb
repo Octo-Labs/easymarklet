@@ -49,10 +49,10 @@
     }
 
     this.createRpcChannel = function(){
-
       _this.consumer = new easyXDM.Rpc(
         /** The channel configuration*/
         {
+          remote: "",
           //local: "/assets/cors/index.html",
           //swf: "/assets/easyxdm.swf",
           onReady: function(){
