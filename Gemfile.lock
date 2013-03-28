@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    easymarklet (0.0.8)
+    easymarklet (0.0.9)
       easyxdm-rails (~> 0.0.5)
       rails (~> 3.2.8)
 
@@ -163,7 +163,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.35)
+    tzinfo (0.3.37)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
