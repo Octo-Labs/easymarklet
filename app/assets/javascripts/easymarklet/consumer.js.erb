@@ -15,11 +15,16 @@
     var easymarkletDiv = null;
 
     var consumer_url = encodeURIComponent(document.location);
-    var protocol = (document.location.href.substring(0,8) === 'https://') ? 'https://' : 'http://'
+    // Try to determine the protocol to be used based on the current page
+    var protocol = (document.location.href.substring(0,8) === 'https') ? 'https' : 'http'
+    // Allow protocol to be overridden by the bookmarklet definition
+    if(bookmarklet.protocol){
+      protocol = bookmarklet.protocol;
+    }
     var host = '<%= Rails.application.config.action_controller.default_url_options[:host] %>';
     var port = '<%= Rails.application.config.action_controller.default_url_options[:port] %>';
     port = port === '' ? '' : ':' + port;
-    var full_host = protocol + host + port;
+    var full_host = protocol  + '://' + host + port;
 
     // Once easyXDM is available this will create an iframe and set up the RPC channel
     function scriptOnLoad(){
