@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    easymarklet (0.0.10)
+    easymarklet (0.0.11)
       easyxdm-rails (~> 0.0.5)
       rails (~> 3.2.8)
 
