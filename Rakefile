@@ -28,7 +28,7 @@ Bundler::GemHelper.install_tasks
 
 desc "Run tests for travis"
 task :travis do
-  ["rspec"].each do |cmd|
+  ["xvfb-run rspec"].each do |cmd|
     puts "Starting to run #{cmd}..."
     system("export DISPLAY=:99.0 && bundle exec #{cmd}")
     raise "#{cmd} failed!" unless $?.exitstatus == 0
