@@ -9,6 +9,11 @@ The easiest way to create bookmarklets for your rails app.
 
 [![Gem Version](https://badge.fury.io/rb/easymarklet.png)](http://badge.fury.io/rb/easymarklet)
 [![Build Status](https://travis-ci.org/Octo-Labs/easymarklet.png?branch=master)](https://travis-ci.org/Octo-Labs/easymarklet)
+[![Code Climate](https://codeclimate.com/repos/52f4867d695680575a00554c/badges/100e3652055ae0fbec54/gpa.png)](https://codeclimate.com/repos/52f4867d695680575a00554c/feed)
+[![Coverage Status](https://coveralls.io/repos/Octo-Labs/easymarklet/badge.png)](https://coveralls.io/r/Octo-Labs/easymarklet)
+[![Dependency Status](https://gemnasium.com/Octo-Labs/easymarklet.png)](https://gemnasium.com/Octo-Labs/easymarklet)
+
+
 
 
 Installation
