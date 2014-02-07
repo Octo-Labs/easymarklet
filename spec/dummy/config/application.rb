@@ -64,6 +64,15 @@ module Dummy
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.assets.precompile += %w( fvbiframe_consumer.js )
+    config.assets.precompile += %w( fvbiframe_producer.js )
+    config.assets.precompile += %w( fvbiframe_bookmarklet.css )
+
+    config.assets.precompile += %w( foobaz_xdm_consumer.js )
+    config.assets.precompile += %w( foobaz_xdm_producer.js )
+    config.assets.precompile += %w( foobaz_xdm_bookmarklet.js )
+
   end
 end
 

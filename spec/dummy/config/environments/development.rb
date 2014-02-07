@@ -33,7 +33,7 @@ Dummy::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false # true
 
   config.action_controller.default_url_options = {:host => 'localhost', :port => '3000'}
 
