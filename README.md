@@ -7,6 +7,9 @@ The easiest way to create bookmarklets for your rails app.
 
 [Also, see the source code for "Foo vs Baz".](https://github.com/Octo-Labs/foo_vs_baz)
 
+[![Gem Version](https://badge.fury.io/rb/easymarklet.png)](http://badge.fury.io/rb/easymarklet)
+
+
 Installation
 -------------------
 
