@@ -8,7 +8,6 @@ describe "the simple bookmarklet" do
     page.should_not have_content 'Foo vs. Baz'
 
     click_on 'FooBaz Insert'
-    sleep(1)
 
     page.should have_content 'Foo vs. Baz'
   end
