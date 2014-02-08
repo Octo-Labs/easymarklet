@@ -22,11 +22,11 @@ describe Easymarklet::LinkHelper do
     end
 
     it "should match an exact string" do
-      helper.easymarklet_js.should == "javascript:(function(){var script=document.createElement('SCRIPT');script.src='http://localhost:3000/assets/bookmarklet.js';document.body.appendChild(script);})()"
+      helper.easymarklet_js.should == "javascript:(function(){var script=document.createElement('SCRIPT');script.src='http://localhost:12345/assets/bookmarklet.js';document.body.appendChild(script);})()"
     end
 
     it "should match an exact string for a custom bookmarket manifest" do
-      helper.easymarklet_js('my_manifest.js').should == "javascript:(function(){var script=document.createElement('SCRIPT');script.src='http://localhost:3000/assets/my_manifest.js';document.body.appendChild(script);})()"
+      helper.easymarklet_js('my_manifest.js').should == "javascript:(function(){var script=document.createElement('SCRIPT');script.src='http://localhost:12345/assets/my_manifest.js';document.body.appendChild(script);})()"
     end
 
   end
