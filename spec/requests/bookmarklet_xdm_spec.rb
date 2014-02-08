@@ -8,7 +8,7 @@ describe "the xdm bookmarklet" do
     page.should_not have_selector 'iframe'
 
     click_on 'FooBaz XDM'
-
+    sleep(1)
     page.should have_selector 'iframe'
   end
 

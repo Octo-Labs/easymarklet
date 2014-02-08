@@ -52,6 +52,13 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+
+    load_schema = lambda {
+      load "#{Rails.root.to_s}/db/schema.rb" # use db agnostic schema by default
+      # ActiveRecord::Migrator.up('db/migrate') # use migrations
+    }
+    silence_stream(STDOUT, &load_schema)
+
   end
 
 
