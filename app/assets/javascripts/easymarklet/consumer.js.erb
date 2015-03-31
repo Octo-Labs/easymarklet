@@ -23,6 +23,10 @@
     }
     var host = '<%= Rails.application.config.action_controller.default_url_options[:host] %>';
     var port = '<%= Rails.application.config.action_controller.default_url_options[:port] %>';
+    // Allow port to be overriden by the bookmarklet definition - useful for ssl
+    if(bookmarklet.port) {
+      port = bookmarklet.port;
+    }
     port = port === '' ? '' : ':' + port;
     var full_host = protocol  + '://' + host + port;
 
