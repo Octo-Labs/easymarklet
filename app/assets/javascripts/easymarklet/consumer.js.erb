@@ -1,7 +1,6 @@
 (function(){
 
   var Easymarklet = window.Easymarklet || {}
-
   Easymarklet.Consumer = function(bookmarklet){
     if(bookmarklet == null){ alert('You must pass some bookmarklet to Easymarklet.Consumer.'); return;}
     if(bookmarklet.consumer == null){ alert('Your bookmarklet definition is missing a consumer.'); return; }
@@ -21,8 +20,8 @@
     if(bookmarklet.protocol){
       protocol = bookmarklet.protocol;
     }
-    var host = '<%= Rails.application.config.action_controller.default_url_options[:host] %>';
-    var port = '<%= Rails.application.config.action_controller.default_url_options[:port] %>';
+    var host = '<%= Rails.application.config.domain %>';
+    var port = '<%= Rails.application.config.port  %>';
     // Allow port to be overriden by the bookmarklet definition - useful for ssl
     if(bookmarklet.port) {
       port = bookmarklet.port;
