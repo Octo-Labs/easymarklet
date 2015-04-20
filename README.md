@@ -91,6 +91,8 @@ To enable cross domain communictaion between your site and other pages on the 'n
 
     config.action_controller.default_url_options = {:host => 'localhost', :port => 3000}
 
+The port can also be supplied as a parameter in the bookmarklet.js file - this will override the value from the rails application. This is useful if you have middleware changing the port that the browser sees (e.g. nginx to implement ssl)
+
 XDM bookmarklet code acts as a consumer for data or a service that is
 supplied by the provider, a page on your app.  
 
