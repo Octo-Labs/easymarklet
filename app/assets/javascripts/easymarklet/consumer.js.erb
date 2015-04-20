@@ -31,12 +31,12 @@
 
     // Once easyXDM is available this will create an iframe and set up the RPC channel
     function scriptOnLoad(){
-        
+
         if (isLoaded || typeof easyXDM === "undefined" || typeof JSON === "undefined") {
             return;
         }
         isLoaded = true;
-        
+
         if(bookmarklet.visible){
           easymarkletDiv = document.createElement('div');
           easymarkletDiv.id = "easymarklet_div";
@@ -47,14 +47,14 @@
 
         //var dest = full_host + "/bookmarklet_frame?dest=";
         //dest += encodeURIComponent("/bookmarklet/court_cases/check?court_case[url]=" + caseUrl);
-        
+
         var dest = full_host + bookmarklet.producer.path
         dest += "?url=" + encodeURIComponent(document.location.href);
         if(bookmarklet.producer.buffer){
           dest = full_host + bookmarklet.producer.buffer + "?producer=" + encodeURIComponent(bookmarklet.producer.path);
           dest += "&url=" + encodeURIComponent(document.location.href)
         }
-        
+
         // here we put the main code, in this case we expose an ajax endpoint
         _this.producer = new easyXDM.Rpc({
           remote: dest,
@@ -72,7 +72,7 @@
             }
         }, _this.createRpcConfig() /*{
           remote: {
-            
+
                 post: {}
             },
             local : {
@@ -116,7 +116,7 @@
       s1.onload = scriptOnLoad;
       head.appendChild(s1);
     }
-    
+
     this.loadJsonLib = function(){
       // load JSON if needed
       if (typeof JSON === "undefined" || !JSON) {
@@ -134,7 +134,7 @@
     }
 
     this.loadCss = function(){
-      //Load the css   
+      //Load the css
       bookmarklet.consumer.css = [].concat(bookmarklet.consumer.css)
       for(var i = 0; i<bookmarklet.consumer.css.length; i++){
         var src = bookmarklet.consumer.css[i]
@@ -143,7 +143,7 @@
         css.type = 'text/css';
         css.media = 'screen';
         css.rel = 'stylesheet';
-        head.appendChild(css); 
+        head.appendChild(css);
       }
     }
 
@@ -186,14 +186,15 @@
     this.resizeFrame = function(height){
       easymarkletDiv.style.height = height + "px";
       easymarkletDiv.getElementsByTagName("iframe")[0].style.height = height + "px";
+      easymarkletDiv.getElementsByTagName("iframe")[0].style.width =  "100%";
     }
 
   } // Easymarklet.Consumer = function(){
 
-  
+
   // Now expose the Easymarklet to the global object
   window.Easymarklet = Easymarklet;
-     
-        
+
+
 })();
 
